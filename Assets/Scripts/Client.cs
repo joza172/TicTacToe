@@ -29,7 +29,7 @@ public class Client : NetworkManager
             if (serverAddress != null)
             {
                 tcpClient = new TcpClient();
-                await tcpClient.ConnectAsync(IPAddress.Loopback, Constants.PORT);
+                await tcpClient.ConnectAsync(serverAddress, Constants.PORT);
 
                 NetworkStream networkStream = tcpClient.GetStream();
                 int read;
@@ -170,9 +170,7 @@ public class Client : NetworkManager
             // provjerite je li udpClient aktivan (ne null)
             if(udpClient != null)
             {
-                // pošaljite requestData na broadcast IP adresu te port iz Constant polja
-
-                //TODO put your own ip address in the brackets
+                // pošaljite requestData na broadcast IP adresu te port iz Constant 
                 IPAddress brodcastIPAddress = IPAddress.Broadcast;
                 IPEndPoint broadcastEndPoint = new IPEndPoint(brodcastIPAddress, Constants.PORT);
                 byte[] requestBytes = Encoding.ASCII.GetBytes(requestData);

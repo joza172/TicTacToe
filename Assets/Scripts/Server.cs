@@ -29,7 +29,7 @@ public class Server : NetworkManager
         {   // pronalazak lokalne IP adrese 
             IPAddress myIpAddress = GetLocalIPAddress();
             // instanciranje novog tcpServera koji čeka za TCP vezu na predefiniranom protu
-            tcpServer = new TcpListener(IPAddress.Loopback, Constants.PORT);
+            tcpServer = new TcpListener(myIpAddress, Constants.PORT);
 
             if (myIpAddress != null)
             {
